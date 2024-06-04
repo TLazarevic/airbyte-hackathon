@@ -1,5 +1,4 @@
 import airbyte as ab
-from airbyte_api.models import Mixpanel
 from dotenv import load_dotenv
 import os
 
@@ -12,7 +11,10 @@ API_SECRET = os.environ["API_SECRET"]
 # source_config = ProjectSecret(api_secret=API_SECRET)
 source = ab.get_source(
     "source-mixpanel",
-    config={"credentials": {"api_secret": API_SECRET, "option_title": "Project Secret"}},
+    config={
+        "credentials": {"api_secret": API_SECRET, "option_title": "Project Secret"},
+        "region": "US",
+    },
     install_if_missing=True,
 )
 
