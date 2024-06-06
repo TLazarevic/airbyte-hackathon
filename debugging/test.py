@@ -6,14 +6,19 @@ load_dotenv()
 
 API_SECRET = os.environ["API_SECRET"]
 
-# TODO: Test all connection options
-
-# source_config = ProjectSecret(api_secret=API_SECRET)
 source = ab.get_source(
     "source-mixpanel",
     config={
-        "credentials": {"api_secret": API_SECRET, "option_title": "Project Secret"},
-        "region": "US",
+        "credentials": {
+            "username": os.environ["USERNAME"],
+            "secret": os.environ["SECRET"],
+            "project_id": os.environ["PROJECT_ID"],
+        },
+        "start_date": "2023-01-01T00:00:00Z",
+        "end_date": "2023-01-01T01:00:00Z",
+        "region": "EU",
+        "attribution_window": 0,
+        "date_window_size": 180,
     },
     install_if_missing=True,
 )
