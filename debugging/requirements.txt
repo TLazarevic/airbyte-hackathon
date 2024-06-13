@@ -1,2 +1,3 @@
 airbyte
 dotenv
+pytest

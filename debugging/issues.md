@@ -3,3 +3,7 @@
 | connecting to mixpanel source without specified region fails, even though the region is not marked as mandatory                                     | Region default value is used when omitted (US)                                                                                                                                     | no               |     |     |
 | connecting to a mixpanel source fails with Failure Reason: "'Unable to connect to stream cohorts - Unable to perform a request. Payment Required.'" | A warning is issued, or a more user friendly error that indicates that the Mixpanel account must be a paid one to be able to use the API. This should be added to the docs as well | no               |     |     |
 |                                                                                                                                                     |                                                                                                                                                                                    |                  |     |     |
+
+
+What is the issue with the exports stream?
+Can we test pyairbyte limits? Ia 429 handled well
