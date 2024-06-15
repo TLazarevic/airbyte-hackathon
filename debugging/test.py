@@ -16,19 +16,17 @@ source = ab.get_source(
         },
         "start_date": "2023-01-01T00:00:00Z",
         "end_date": "2023-01-01T00:10:00Z",
-         "region": "EU",
+        "region": "EU",
         "attribution_window": 0,
         "date_window_size": 180,
     },
     install_if_missing=True,
 )
 
-#source.check()
+# source.check()
 # source.select_all_streams()
 source.select_streams(["revenue"])
 result = source.read()
 
 for name, records in result.streams.items():
     print(f"Stream {name}: {len(list(records))} records")
-    
-

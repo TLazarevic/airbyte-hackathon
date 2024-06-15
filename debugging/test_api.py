@@ -5,14 +5,17 @@ import os
 load_dotenv()
 
 API_SECRET = os.environ["API_SECRET"]
-USERNAME = os.environ["USERNAME"],
-SECRET =  os.environ["SECRET"],
-PROJECT_ID = int(os.environ["PROJECT_ID"]),
+USERNAME = os.environ["USERNAME"]
+SECRET = os.environ["SECRET"]
+PROJECT_ID = int(os.environ["PROJECT_ID"])
 
-url = "https://data.mixpanel.com/api/2.0/export"
+url = f"https://eu.mixpanel.com/api/query/cohorts/list?project_id={PROJECT_ID}"
 
-headers = {"accept": "text/plain"}
+headers = {
+    "accept": "text/plain",
+}
 
-response = requests.get(url, headers=headers)
+response = requests.get(url, headers=headers, auth=(USERNAME, SECRET))
 
+print(response.status_code)
 print(response.text)
