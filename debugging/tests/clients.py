@@ -13,19 +13,17 @@ USERNAME = os.environ["USERNAME"]
 SECRET = os.environ["SECRET"]
 PROJECT_ID = int(os.environ["PROJECT_ID"])
 
-
-@pytest.fixture
-def pyairbyte_connector():
+def pyairbyte_connector(start_date = "2023-01-01T00:00:00Z", end_date = "2023-01-02T00:00:00Z"):
     source = ab.get_source(
         "source-mixpanel",
         config={
             "credentials": {
-                "username": os.environ["USERNAME"],
-                "secret": os.environ["SECRET"],
-                "project_id": int(os.environ["PROJECT_ID"]),
+                "username": USERNAME,
+                "secret": SECRET,
+                "project_id": PROJECT_ID,
             },
-            "start_date": "2023-01-01T00:00:00Z",
-            "end_date": "2023-01-01T00:10:00Z",
+            "start_date": start_date,
+            "end_date": end_date,
             "region": "EU",
             "attribution_window": 0,
             "date_window_size": 180,
@@ -36,8 +34,7 @@ def pyairbyte_connector():
     return source
 
 
-@pytest.fixture
-def airybyte_connector():
+def mixpanel_api():
     def cohorts():
         url = f"https://eu.mixpanel.com/api/query/cohorts/list?project_id={PROJECT_ID}"
 

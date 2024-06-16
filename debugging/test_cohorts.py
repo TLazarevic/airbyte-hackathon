@@ -44,12 +44,15 @@ def get_pyairbyte_cohorts():
     
     source.select_streams(["cohorts"])
     result = source.read()
+    
+    print(result)
+    print(result['cohorts'].to_pandas().head())
 
     return result['cohorts'].to_pandas()
 
 
 class TestCohorts:
-    def test_count(self):
+    def test_against_api(self):
         api_result = get_api_cohorts()
         pyairbyte_result = get_pyairbyte_cohorts()
         
@@ -57,3 +60,4 @@ class TestCohorts:
         print(pyairbyte_result)
 
         assert api_result.shape[0] == pyairbyte_result.shape[0]
+        assert list(api_result['id']) == list(pyairbyte_result['id'])
