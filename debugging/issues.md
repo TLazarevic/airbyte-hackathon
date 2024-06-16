@@ -26,8 +26,8 @@ Every issue which we found will be displayed as item in list below.
   - **Proposed improvement:** *Proposed Improvement*
   - **Bug fix provided:** Yes|No
 
-- **Issue:** 492 is not handled proplery
+- **Issue:** 492 is not handled properly
 
-  We haven't got 429 respone when we reached query limit as it's described in docs.
+  We haven't got 429 response when we reached query limit as it's described in docs.
   - **Proposed improvement:** *Proposed Improvement*
   - **Bug fix provided:** Yes|No
