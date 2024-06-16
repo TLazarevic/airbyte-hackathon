@@ -3,3 +3,4 @@ python-dotenv
 pytest
 black
 pytest
+pytest-timeout
