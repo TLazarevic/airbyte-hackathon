@@ -7,7 +7,7 @@ import pandas as pd
 
 def get_api_cohorts():
     # Cohorts api returns a list of cohort objects
-    
+
     load_dotenv()
 
     USERNAME = os.environ["USERNAME"]
@@ -21,9 +21,29 @@ def get_api_cohorts():
     }
 
     # result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
-    result = [{"id": 1478097, "project_id": 2529987, "name": "Cohort1", "description": "", "data_group_id": None, "count": 2, "is_visible": 1, "created": "2021-09-14 15:57:43"}, {"id": 4269287, "project_id": 2529987, "name": "cohort2", "description": "", "data_group_id": None, "count": 0, "is_visible": 1, "created": "2024-05-14 10:02:05"}]
+    result = [
+        {
+            "id": 1478097,
+            "project_id": 2529987,
+            "name": "Cohort1",
+            "description": "",
+            "data_group_id": None,
+            "count": 2,
+            "is_visible": 1,
+            "created": "2021-09-14 15:57:43",
+        },
+        {
+            "id": 4269287,
+            "project_id": 2529987,
+            "name": "cohort2",
+            "description": "",
+            "data_group_id": None,
+            "count": 0,
+            "is_visible": 1,
+            "created": "2024-05-14 10:02:05",
+        },
+    ]
     return pd.DataFrame.from_records(result)
-
 
 
 def get_pyairbyte_cohorts():
@@ -41,23 +61,23 @@ def get_pyairbyte_cohorts():
         },
         install_if_missing=True,
     )
-    
+
     source.select_streams(["cohorts"])
     result = source.read()
-    
-    print(result)
-    print(result['cohorts'].to_pandas().head())
 
-    return result['cohorts'].to_pandas()
+    print(result)
+    print(result["cohorts"].to_pandas().head())
+
+    return result["cohorts"].to_pandas()
 
 
 class TestCohorts:
     def test_against_api(self):
         api_result = get_api_cohorts()
         pyairbyte_result = get_pyairbyte_cohorts()
-        
+
         print(api_result)
         print(pyairbyte_result)
 
         assert api_result.shape[0] == pyairbyte_result.shape[0]
-        assert list(api_result['id']) == list(pyairbyte_result['id'])
+        assert list(api_result["id"]) == list(pyairbyte_result["id"])

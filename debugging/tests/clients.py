@@ -13,7 +13,8 @@ USERNAME = os.environ["USERNAME"]
 SECRET = os.environ["SECRET"]
 PROJECT_ID = int(os.environ["PROJECT_ID"])
 
-def pyairbyte_connector(start_date = "2023-01-01T00:00:00Z", end_date = "2023-01-02T00:00:00Z"):
+
+def pyairbyte_connector(start_date="2023-01-01T00:00:00Z", end_date="2023-01-02T00:00:00Z"):
     source = ab.get_source(
         "source-mixpanel",
         config={
