@@ -2,9 +2,12 @@ import airbyte as ab
 import requests
 from dotenv import load_dotenv
 import os
+import pandas as pd
 
 
 def get_api_cohorts():
+    # Cohorts api returns a list of cohort objects
+    
     load_dotenv()
 
     USERNAME = os.environ["USERNAME"]
@@ -17,7 +20,9 @@ def get_api_cohorts():
         "accept": "text/plain",
     }
 
-    return requests.get(url, headers=headers, auth=(USERNAME, SECRET))
+    result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
+    return pd.DataFrame.from_records(result)
+
 
 
 def get_pyairbyte_cohorts():
@@ -37,13 +42,17 @@ def get_pyairbyte_cohorts():
     )
     
     source.select_streams(["cohorts"])
-    return source.read()
+    result = source.read()
+
+    return result['cohorts'].to_pandas()
 
 
 class TestCohorts:
     def test_count(self):
-        result_api = get_api_cohorts()
-        results_pyairbyte=get_pyairbyte_cohorts()
+        api_result = get_api_cohorts()
+        pyairbyte_result = get_pyairbyte_cohorts()
         
-        print(result_api)
-        print(results_pyairbyte)
+        print(api_result)
+        print(pyairbyte_result)
+
+        assert api_result.shape[0] == pyairbyte_result.shape[0]
