@@ -20,7 +20,8 @@ def get_api_cohorts():
         "accept": "text/plain",
     }
 
-    result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
+    # result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
+    result = [{"id": 1478097, "project_id": 2529987, "name": "Cohort1", "description": "", "data_group_id": None, "count": 2, "is_visible": 1, "created": "2021-09-14 15:57:43"}, {"id": 4269287, "project_id": 2529987, "name": "cohort2", "description": "", "data_group_id": None, "count": 0, "is_visible": 1, "created": "2024-05-14 10:02:05"}]
     return pd.DataFrame.from_records(result)
 
 

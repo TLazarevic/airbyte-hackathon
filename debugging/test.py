@@ -25,7 +25,7 @@ source = ab.get_source(
 
 # source.check()
 # source.select_all_streams()
-source.select_streams(["revenue"])
+source.select_streams(["cohorts"])
 result = source.read()
 
 for name, records in result.streams.items():
