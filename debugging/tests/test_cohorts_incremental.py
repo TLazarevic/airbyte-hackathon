@@ -57,8 +57,5 @@ class TestCohorts:
         pyairbyte_result = source.read()
         pyairbyte_result = pyairbyte_result["cohorts"].to_pandas()
 
-        print(api_result)
-        print(pyairbyte_result)
-
         assert api_result.shape[0] == pyairbyte_result.shape[0]
         assert set(api_result["id"]) == set(pyairbyte_result["id"])

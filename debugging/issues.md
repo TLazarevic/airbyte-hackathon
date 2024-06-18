@@ -28,6 +28,6 @@ Every issue which we found will be displayed as item in list below.
 
 - **Issue:** 492 is not handled properly
 
-  We haven't got 429 response when we reached query limit as it's described in docs.
-  - **Proposed improvement:** *Proposed Improvement*
-  - **Bug fix provided:** Yes|No
+  We haven't got 429 response when we reached query limit as it's described in docs. It seems that the connector hangs in order to prevent crossing the limit.
+  - **Proposed improvement:** It seems that the sleeping behavior is part of the connector itself, and not the pyairbyte, so it doesn't seem to be easily resolvable.
+  - **Bug fix provided:** No
