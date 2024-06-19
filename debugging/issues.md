@@ -31,3 +31,15 @@ Every issue which we found will be displayed as item in list below.
   We haven't got 429 response when we reached query limit as it's described in docs. It seems that the connector hangs in order to prevent crossing the limit.
   - **Proposed improvement:** It seems that the sleeping behavior is part of the connector itself, and not the pyairbyte, so it doesn't seem to be easily resolvable.
   - **Bug fix provided:** No
+
+- **Issue:** Cohorts stream results are incomplete
+
+  Cohorts stream repeatedly returns incomplete results, which is inconsistent with both incremental and full refresh approach
+  - **Proposed improvement:** /
+  - **Bug fix provided:** No
+
+- **Issue:** Cohort members stream returns results with duplicate distinct_ids
+
+  Cohort members stream retrieves a full set of distinct ids, but some rows have duplicated distinct_ids
+  - **Proposed improvement:** /
+  - **Bug fix provided:** No

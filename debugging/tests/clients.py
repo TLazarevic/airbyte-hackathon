@@ -35,13 +35,23 @@ def pyairbyte_connector(start_date="2023-01-01T00:00:00Z", end_date="2023-01-02T
     return source
 
 
-def mixpanel_api():
-    def cohorts():
-        url = f"https://eu.mixpanel.com/api/query/cohorts/list?project_id={PROJECT_ID}"
 
-        headers = {
-            "accept": "text/plain",
-        }
+def mixpanel_api_cohorts():
+    url = f"https://eu.mixpanel.com/api/query/cohorts/list?project_id={PROJECT_ID}"
 
-        result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
-        return pd.DataFrame.from_records(result)
+    headers = {
+        "accept": "text/plain",
+    }
+
+    result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
+    return pd.DataFrame.from_records(result)
+
+def mixpanel_api_cohort_members():
+    url = f"https://eu.mixpanel.com/api/query/engage?project_id={PROJECT_ID}"
+
+    headers = {
+        "accept": "text/plain",
+    }
+
+    result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()['results']
+    return pd.DataFrame.from_records(result)

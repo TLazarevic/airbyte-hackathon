@@ -25,8 +25,11 @@ source = ab.get_source(
 
 # source.check()
 # source.select_all_streams()
-source.select_streams(["cohorts"])
+source.select_streams(["cohort_members"])
 result = source.read()
 
 for name, records in result.streams.items():
     print(f"Stream {name}: {len(list(records))} records")
+
+pyairbyte_result_df = result["cohort_members"].to_pandas()
+print(pyairbyte_result_df.head())
