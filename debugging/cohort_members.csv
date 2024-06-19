@@ -1,0 +1,6 @@
+,cohort_id,distinct_id,browser,browser_version,city,country_code,region,timezone,last_seen,email,name,first_name,last_name,id,unblocked,test,_123,how_are_you,_airbyte_raw_id,_airbyte_extracted_at,_airbyte_meta
+0,4269287,123@gmail.com,,,,,,,2023-01-01,123@gmail.com,123,,,,,,123456,just fine,01J0RPYAQ3W7RQ4S5RJB5FB5E1,2024-06-19 16:58:07.456,{}
+1,4269287,integration-test.db4415.mp-service-account,,,,,,,2023-01-01,,test,,,,,test,,,01J0RPYAQ3G2Z33JT9R9ZZRZ7V,2024-06-19 16:58:07.454,{}
+2,4269287,integration-test@airbyte.io,,,,,,,2023-01-01,integration-test@airbyte.io,Integration Test1,,,,,test,,,01J0RPYAQ23QTCTQS5ATYA4KK3,2024-06-19 16:58:07.451,{}
+3,1478097,integration-test.db4415.mp-service-account,,,,,,,2023-01-01,,test,,,,,test,,,01J0RPWE1PSEDBYYZ6C3KW7VV6,2024-06-19 16:57:05.323,{}
+4,1478097,integration-test@airbyte.io,,,,,,,2023-01-01,integration-test@airbyte.io,Integration Test1,,,,,test,,,01J0RPWE1MXE69VCTQQCDZXQ81,2024-06-19 16:57:05.320,{}

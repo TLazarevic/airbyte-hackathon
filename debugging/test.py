@@ -33,3 +33,4 @@ for name, records in result.streams.items():
 
 pyairbyte_result_df = result["cohort_members"].to_pandas()
 print(pyairbyte_result_df.head())
+pyairbyte_result_df.to_csv("cohort_members.csv")

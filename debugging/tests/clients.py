@@ -35,7 +35,6 @@ def pyairbyte_connector(start_date="2023-01-01T00:00:00Z", end_date="2023-01-02T
     return source
 
 
-
 def mixpanel_api_cohorts():
     url = f"https://eu.mixpanel.com/api/query/cohorts/list?project_id={PROJECT_ID}"
 
@@ -46,12 +45,18 @@ def mixpanel_api_cohorts():
     result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
     return pd.DataFrame.from_records(result)
 
+
 def mixpanel_api_cohort_members():
     url = f"https://eu.mixpanel.com/api/query/engage?project_id={PROJECT_ID}"
 
-    headers = {
-        "accept": "text/plain",
-    }
+    headers = {"accept": "text/plain", "content-type": "application/x-www-form-urlencoded"}
 
-    result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()['results']
-    return pd.DataFrame.from_records(result)
+    # Actual cohort IDs, this saves on API requests
+    results = []
+    for cohort_id in ["1478097", "4269287"]:
+        payload = {"filter_by_cohort": f'{{"id":{cohort_id}}}'}
+        response = requests.post(url, headers=headers, data=payload, auth=(USERNAME, SECRET)).json()["results"]
+        for result in response:
+            results.append({"cohort_id": cohort_id, "distinct_id": result["$distinct_id"]})
+
+    return pd.DataFrame(results)
