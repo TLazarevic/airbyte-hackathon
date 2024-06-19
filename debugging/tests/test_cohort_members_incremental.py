@@ -6,7 +6,10 @@ import pandas as pd
 from clients import *
 
 
-class TestCohorts:
+class TestCohortMembers:
+    """
+    Detected begavior: PyAirbyte's cohort members streams returns rows with duplicate distinct ids.
+    """
     def test_against_api(self):
         api_result = mixpanel_api_cohort_members()
 
