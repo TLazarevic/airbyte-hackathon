@@ -20,5 +20,5 @@ class TestCohortMembers:
         pyairbyte_result = source.read()
         pyairbyte_result = pyairbyte_result["cohort_members"].to_pandas()
 
-        assert set(api_result["$distinct_id"]) == set(pyairbyte_result["distinct_id"])
+        assert set(api_result["distinct_id"]) == set(pyairbyte_result["distinct_id"])
         assert api_result.shape[0] == pyairbyte_result.shape[0]
