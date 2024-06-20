@@ -13,7 +13,6 @@ class TestCohortMembers:
 
     def test_against_api(self):
         api_result = mixpanel_api_cohort_members()
-        print(api_result.head())
 
         source = pyairbyte_connector(start_date="2020-01-01T00:00:00Z", end_date="2025-01-01T00:00:00Z")
         source.select_streams(["cohort_members"])
