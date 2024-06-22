@@ -4,8 +4,6 @@ import os
 
 load_dotenv()
 
-API_SECRET = os.environ["API_SECRET"]
-
 source = ab.get_source(
     "source-mixpanel",
     config={
