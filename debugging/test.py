@@ -21,14 +21,14 @@ source = ab.get_source(
     install_if_missing=True,
 )
 
-# source.check()
+source.check()
 # source.select_all_streams()
-source.select_streams(["cohort_members"])
+source.select_streams(["cohorts"])
 result = source.read()
 
 for name, records in result.streams.items():
     print(f"Stream {name}: {len(list(records))} records")
 
-pyairbyte_result_df = result["cohort_members"].to_pandas()
+pyairbyte_result_df = result["cohorts"].to_pandas()
 print(pyairbyte_result_df.head())
-pyairbyte_result_df.to_csv("cohort_members.csv")
+pyairbyte_result_df.to_csv("cohorts.csv")

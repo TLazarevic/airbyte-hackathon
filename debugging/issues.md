@@ -38,8 +38,8 @@ Every issue which we found will be displayed as item in list below.
   - **Proposed improvement:** /
   - **Bug fix provided:** No
 
-- **Issue:** Cohort members stream returns results with duplicate distinct_ids
+- **Issue:** Two processes can't run in parallel with default cache
 
-  Cohort members stream retrieves a full set of distinct ids, but some rows have duplicated distinct_ids
-  - **Proposed improvement:** /
+  The process tries to lock the cache file, and an duckdb.duckdb.IOException occurs.
+  - **Proposed improvement:** Default cache file is distinct for each pyairbyte run
   - **Bug fix provided:** No
