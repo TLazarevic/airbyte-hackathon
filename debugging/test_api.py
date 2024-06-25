@@ -1,3 +1,4 @@
+import json
 import requests
 from dotenv import load_dotenv
 import os
@@ -23,4 +24,13 @@ response = requests.get(url, headers=headers, auth=(USERNAME, SECRET))
 print(response.status_code)
 print(response.text)
 
-print(pd.DataFrame.from_records(response.json()["data"]))
+data = []
+for date, details in response.json()["data"].items():
+    for step in details["steps"]:
+        step["date"] = date
+        data.append(step)
+
+df = pd.DataFrame(data)
+print(df)
+
+

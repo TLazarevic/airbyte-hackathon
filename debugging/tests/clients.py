@@ -67,4 +67,13 @@ def mixpanel_api_funnels(funnel_id, start_date, end_date):
     headers = {"accept": "text/plain", "content-type": "application/x-www-form-urlencoded"}
 
     result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
-    return pd.DataFrame.from_records(result)
+    
+    data = []
+    for date, details in result["data"].items():
+        for step in details["steps"]:
+            step["date"] = date
+            data.append(step)
+
+    df = pd.DataFrame(data)
+
+    return df
