@@ -32,12 +32,6 @@ Every issue which we found will be displayed as item in list below.
   - **Proposed improvement:** It seems that the sleeping behavior is part of the connector itself, and not the pyairbyte, so it doesn't seem to be easily resolvable.
   - **Bug fix provided:** No
 
-- **Issue:** Cohorts stream results are incomplete
-
-  Cohorts stream repeatedly returns incomplete results, which is inconsistent with both incremental and full refresh approach
-  - **Proposed improvement:** /
-  - **Bug fix provided:** No
-
 - **Issue:** Two processes can't run in parallel with default cache
 
   The process tries to lock the cache file, and an duckdb.duckdb.IOException occurs.
