@@ -23,12 +23,12 @@ source = ab.get_source(
 
 source.check()
 # source.select_all_streams()
-source.select_streams(["cohorts"])
+source.select_streams(["funnels"])
 result = source.read()
 
 for name, records in result.streams.items():
     print(f"Stream {name}: {len(list(records))} records")
 
-pyairbyte_result_df = result["cohorts"].to_pandas()
+pyairbyte_result_df = result["funnels"].to_pandas()
 print(pyairbyte_result_df.head())
-pyairbyte_result_df.to_csv("cohorts.csv")
+pyairbyte_result_df.to_csv("funnels.csv")
