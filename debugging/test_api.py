@@ -32,5 +32,3 @@ for date, details in response.json()["data"].items():
 
 df = pd.DataFrame(data)
 print(df)
-
-

@@ -7,11 +7,17 @@ from clients import *
 
 
 class TestCohortMembers:
-    """
-    Detected begavior: PyAirbyte's cohort members streams returns rows with duplicate distinct ids.
-    """
+
+    def test_sanity(self):
+        source = pyairbyte_connector(start_date="2021-01-01T00:00:00Z", end_date="2025-01-01T00:00:00Z")
+        streams = source.get_available_streams()
+        assert "cohort_members" in streams
 
     def test_against_api(self):
+        """
+        Detected behavior: PyAirbyte's cohort members streams returns rows with duplicate distinct ids.
+        """
+
         api_result = mixpanel_api_cohort_members()
         api_result["cohort_id"] = api_result["cohort_id"].astype(str)
 

@@ -62,12 +62,14 @@ def mixpanel_api_cohort_members():
 
 
 def mixpanel_api_funnels(funnel_id, start_date, end_date):
-    url = f"https://eu.mixpanel.com/api/query/funnels?project_id={PROJECT_ID}&funnel_id={funnel_id}&from_date={start_date}&to_date={end_date}"
+    url = (
+        f"https://eu.mixpanel.com/api/query/funnels?project_id={PROJECT_ID}&funnel_id={funnel_id}&from_date={start_date}&to_date={end_date}"
+    )
 
     headers = {"accept": "text/plain", "content-type": "application/x-www-form-urlencoded"}
 
     result = requests.get(url, headers=headers, auth=(USERNAME, SECRET)).json()
-    
+
     data = []
     for date, details in result["data"].items():
         for step in details["steps"]:
